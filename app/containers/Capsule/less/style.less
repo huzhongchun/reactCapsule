@@ -1,0 +1,44 @@
+.block-area{
+  border-bottom: 10px solid #F5F5F5;
+}
+.block-area:last-child{
+  border-bottom: none;
+}
+.block-title{
+  height: 65px;
+  width: 345px;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 1px solid #F5F5F5;
+  position: relative;
+}
+.title-box{
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translate3d(0,-50%,0);
+  -moz-transform: translate3d(0,-50%,0);
+  -ms-transform: translate3d(0,-50%,0);
+  -o-transform: translate3d(0,-50%,0);
+  transform: translate3d(0,-50%,0);
+  font-size: 18px;
+  color: #353535;
+}
+.block-title::after{
+  display: block;
+  content: '';
+  width: 20px;
+  background: #1B7367;
+  height: 1px;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  right: 0;
+  margin: auto;
+  border-radius: 2px;
+}
+.book-list{
+  padding: 15px 15px 0;
+}
