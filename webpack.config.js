@@ -73,6 +73,7 @@ module.exports = {
         colors: true, //终端中输出结果为彩色
         historyApiFallback: true, //不跳转
         inline: true, //实时刷新
+        disableHostCheck: true,
         hot: true  // 使用热加载插件 HotModuleReplacementPlugin
     }
 }
