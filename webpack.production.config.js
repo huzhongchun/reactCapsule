@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: __dirname + "/build",
     filename: "[name].[chunkhash:8].js",
-    publicPath: 'http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/'
+    publicPath: 'http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/react/'
   },
 
   resolve:{

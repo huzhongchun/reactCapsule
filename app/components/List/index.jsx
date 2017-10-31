@@ -23,13 +23,9 @@ class List extends React.Component {
         }
     }
     componentWillMount(){
-        console.log('willMount');
+
     }
     componentDidMount(){
-        setTimeout(()=> {
-            this.loadFirstPageData();
-        },1000);
-
         //图片懒加载
         let lazy = new LazyLoad({
             threshold: 400,
@@ -37,13 +33,28 @@ class List extends React.Component {
         });
         this.setState({
             lazyLoadObj: lazy
-        })
+        });
+        let localStorageItemList = window.localStorage.getItem('capsule_index_list_data');
+        let localStorageLastItemID = window.localStorage.getItem('capsule_index_last_item_id');
+        if(!localStorageItemList) {
+            this.loadFirstPageData();
+        }else{
+            this.setState({
+                last_item_id:localStorageLastItemID,
+                initData: true,
+                item_list: JSON.parse(localStorageItemList)
+            },()=>{
+                this.state.lazyLoadObj.refresh();
+            });
+        }
+
+
     }
 
     // 获取首页数据
     loadFirstPageData() {
         const result = getListData(0);
-        this.resultHandle(result)
+        this.resultHandle(result);
     }
     // 加载更多数据
     loadMoreData() {
@@ -75,8 +86,11 @@ class List extends React.Component {
                 //拼接到原数据之后，使用 concat 函数
                 item_list: this.state.item_list.concat(itemList),
                 isLoadingMore: false
+            },()=>{
+                window.localStorage.setItem('capsule_index_list_data',JSON.stringify(this.state.item_list));
+                window.localStorage.setItem('capsule_index_last_item_id',this.state.last_item_id);
+                this.state.lazyLoadObj.refresh();
             });
-            this.state.lazyLoadObj.refresh();
         }).catch(e => {
             console.log(e);
             if (__DEV__) {
