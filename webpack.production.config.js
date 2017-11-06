@@ -20,9 +20,14 @@ module.exports = {
   },
   output: {
     path: __dirname + "/build",
-    filename: "[name].[chunkhash:8].js",
+    filename: "[name].js",
     publicPath: 'http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/react/'
   },
+    // output: {
+    //     path: __dirname + "/build",
+    //     filename: "[name].[chunkhash:8].js",
+    //     publicPath: 'http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/react/'
+    // },
 
   resolve:{
       extensions:['', '.js','.jsx']
@@ -68,13 +73,18 @@ module.exports = {
     }),
     
     // 分离CSS和JS文件
-    new ExtractTextPlugin('[name].[chunkhash:8].css'), 
-    
+    // new ExtractTextPlugin('[name].[chunkhash:8].css'),
+    new ExtractTextPlugin('[name].css'),
+
     // 提供公共代码
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: '[name].[chunkhash:8].js'
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor',
+    //   filename: '[name].[chunkhash:8].js'
+    // }),
+      new webpack.optimize.CommonsChunkPlugin({
+          name: 'vendor',
+          filename: '[name].js'
+      }),
 
     // 可在业务 js 代码中使用 __DEV__ 判断是否是dev模式（dev模式下可以提示错误、测试报告等, production模式不提示）
     new webpack.DefinePlugin({
