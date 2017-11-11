@@ -6,8 +6,14 @@ import configureStore from './redux/store/configureStore'
 
 import './static/css/common.less'
 
+let initStore = {
+    userInfo: {
+        name: 'huzhongchun',
+        nick: 'http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKo17faASULS5nxqibFs9AViaBTxetDxL0mB0btnN9I7LscgTQOBlxgQpuDicQQmSwDICXrdcS87gZCg/0?ts=1510391460?t=111'
+    }
+};
 // 创建 Redux 的 store 对象
-const store = configureStore();
+const store = configureStore(initStore);
 
 import RouteMap from './router/routeMap'
 

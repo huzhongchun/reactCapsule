@@ -1,10 +1,10 @@
-var path = require('path')
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+let path = require('path')
+let webpack = require('webpack')
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
-// var nodeModulesPath = path.resolve(__dirname, 'node_modules')
+// let nodeModulesPath = path.resolve(__dirname, 'node_modules')
 // console.log(process.env.NODE_ENV)
 
 module.exports = {
