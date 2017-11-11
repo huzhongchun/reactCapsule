@@ -1,17 +1,17 @@
-var app = require('koa')();
-var router = require('koa-router')();
+let app = require('koa')();
+let router = require('koa-router')();
 
-// 详情
-let detailData = require('./home/detailCapsule.js')
+// capsule_detail
+let detailData = require('./capsule/detail.js')
 router.post('/chicken/page/get_item_detail', function *(next) {
     this.body = detailData
 });
 
-// 首页 —— 推荐列表（猜你喜欢）
-let homeListData = require('./home/list.js');
+//capsuleList
+let capsuleListData = require('./capsule/list.js');
 router.post('/chicken/item/get_onsell_item_list', function *(next) {
 
-    let listData = Object.assign({},homeListData); //clone
+    let listData = Object.assign({},capsuleListData); //clone
     // 参数
     const params = this.params;
     const paramsLastItemId = params.last_item_id;
@@ -25,13 +25,13 @@ router.post('/chicken/item/get_onsell_item_list', function *(next) {
 });
 
 //order_confirm
-let confirmData = require('./home/orderConfirm.js');
+let confirmData = require('./pay/orderConfirm.js');
 router.post('/chicken/pay/order_confirmation', function *(next) {
     this.body = confirmData
 });
 
 //direct_pay
-let payData = require('./home/directPay.js');
+let payData = require('./pay/directPay.js');
 router.post('/chicken/pay/direct_pay', function *(next) {
     this.body = payData
 });

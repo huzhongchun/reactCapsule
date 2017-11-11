@@ -1,12 +1,8 @@
 import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {connect} from 'react-redux'
-import { browserHistory } from 'react-router'
 
 import Detail from '../../containers/Detail'
 import LoadMore from '../../components/LoadMore'
 import Item from './Item'
-
 import LazyLoad from '../../components/LazyLoad/index'
 import './style.less'
 import {getListData} from '../../fetch/Capsule/index'
