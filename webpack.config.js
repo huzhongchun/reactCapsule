@@ -50,9 +50,9 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
 
         // 打开浏览器
-        new OpenBrowserPlugin({
-          url: 'http://localhost:8081'
-        }),
+        // new OpenBrowserPlugin({
+        //   url: 'http://localhost:8081'
+        // }),
 
         // 可在业务 js 代码中使用 __DEV__ 判断是否是dev模式（dev模式下可以提示错误、测试报告等, production模式不提示）
         new webpack.DefinePlugin({
@@ -70,9 +70,18 @@ module.exports = {
           }
         },
         port: 8081,
+        headers:{
+           'Access-Control-Allow-Origin' :'http://www.lo.react.com',
+        },
         contentBase: "./public", //本地服务器所加载的页面所在的目录
         colors: true, //终端中输出结果为彩色
-        historyApiFallback: true, //不跳转
+        historyApiFallback: {
+            index: 'build/index.html',
+            rewrites: {
+                from: /^\//,
+                to: 'build/index.html'
+            }
+        }, //不跳转
         inline: true, //实时刷新
         disableHostCheck: true,
         hot: true  // 使用热加载插件 HotModuleReplacementPlugin

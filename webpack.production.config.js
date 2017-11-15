@@ -19,9 +19,9 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/build",
+    path: __dirname + "/build",//'/Users/huzhongchun/thefair/www/react/build',//__dirname + "/build",
     filename: "[name].js",
-    publicPath: 'http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/react/'
+    publicPath: '/'
   },
     // output: {
     //     path: __dirname + "/build",
@@ -48,7 +48,7 @@ module.exports = {
 
   plugins: [
     // webpack 内置的 banner-plugin
-    new webpack.BannerPlugin("Copyright by wangfupeng1988@github.com."),
+    new webpack.BannerPlugin("Copyright by Thefair"),
 
     // html 模板插件
     new HtmlWebpackPlugin({

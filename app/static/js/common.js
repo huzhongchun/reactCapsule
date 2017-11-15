@@ -898,28 +898,25 @@
     }
 
 
-    let common = {
-        commonIsWechat:isWechat(),
-        commonReserveSubmit: reserveSubmit,
-        commonCheckMobileFormat:checkMobileFormat,
-        commonHandleAjaxError: handleAjaxError,
-        commonUpLoadImage: upLoadImage,
-        commonHackAlert: hackAlert,
-        commonSubStr: subStr,
-        commonSubStrByChar: subStrByChar,
-        commonBodyScrollYSmooth: bodyScrollYSmooth,
-        commonCloseWechatWebview: closeWechatWebview,
-        commonHideWechatOptionMenu: hideWechatOptionMenu,
-        commonShowWechatOptionMenu:showWechatOptionMenu,
-        commonIsObject:isObject,
-        commonRequireLogin:requireLogin,
-        commonGetXThefairUaApp:getXThefairUaApp,
-        // commonImageLocalCompressCorrect: imageLocalCompressCorrect,
-        commonVarTypeStr: varTypeStr,
-        commonEmpty:empty,
-        commonInitGetVerifyCode: initGetVerifyCode,
-        commonWechatImgDisplay: wechatImgDisplay,
-        commonGetEventPositionPercent: getEventPositionPercent
-    }
-
-module.exports = common;
+module.exports = {
+    commonIsWechat:isWechat(),
+    commonReserveSubmit: reserveSubmit,
+    commonCheckMobileFormat:checkMobileFormat,
+    commonHandleAjaxError: handleAjaxError,
+    commonUpLoadImage: upLoadImage,
+    commonHackAlert: hackAlert,
+    commonSubStr: subStr,
+    commonSubStrByChar: subStrByChar,
+    commonBodyScrollYSmooth: bodyScrollYSmooth,
+    commonCloseWechatWebview: closeWechatWebview,
+    commonHideWechatOptionMenu: hideWechatOptionMenu,
+    commonShowWechatOptionMenu:showWechatOptionMenu,
+    commonIsObject:isObject,
+    commonRequireLogin:requireLogin,
+    commonGetXThefairUaApp:getXThefairUaApp,
+    commonVarTypeStr: varTypeStr,
+    commonEmpty:empty,
+    commonInitGetVerifyCode: initGetVerifyCode,
+    commonWechatImgDisplay: wechatImgDisplay,
+    commonGetEventPositionPercent: getEventPositionPercent
+}

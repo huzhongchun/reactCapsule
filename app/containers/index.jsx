@@ -1,8 +1,5 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as userInfoActionsFromOtherFile from '../redux/actions/userinfo'
 
 import '../static/css/base.css'
 
@@ -34,19 +31,5 @@ class App extends React.Component {
     }
 }
 
-// -------------------redux react 绑定--------------------
 
-function mapStateToProps(state) {
-    return {
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch),
-    }
-}
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App)
+export  default  App

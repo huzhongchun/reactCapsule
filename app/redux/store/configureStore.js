@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import rootReducer from '../reducers'
+import rootReducer from '../reducer'
 
 
 // [preloadedState] (any): 初始时的 state。

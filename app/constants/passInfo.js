@@ -1,0 +1,1 @@
+export const PASSINFO_UPDATE = 'PASSINFO_UPDATE';

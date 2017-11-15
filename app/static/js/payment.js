@@ -264,7 +264,7 @@ import _common from './common.js';
     });
 }
 
-export default {
+module.exports =  {
     callPayment
 };
 

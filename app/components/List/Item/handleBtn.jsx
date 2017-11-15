@@ -41,7 +41,7 @@ class ListItemBtn extends React.Component {
                         $(this).addClass('payed');
                         _this.setState({
                             loading: false,
-                            data: Obeject.assign(_this.state.data,{
+                            data: Object.assign(_this.state.data,{
                                 status: _this.state.data.item_type === 'article_item'? 'read':'play'
                             })
                         });

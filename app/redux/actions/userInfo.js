@@ -1,8 +1,12 @@
 import * as actionTypes from '../../constants/userInfo'
 
-export function update(data) {
+function update(data) {
     return {
         type: actionTypes.USERINFO_UPDATE,
         data
     }
+}
+
+export default {
+    update
 }

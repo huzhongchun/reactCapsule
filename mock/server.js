@@ -1,6 +1,8 @@
 let app = require('koa')();
 let router = require('koa-router')();
+var cors = require('koa-cors');
 
+app.use(cors());
 // capsule_detail
 let detailData = require('./capsule/detail.js')
 router.post('/chicken/page/get_item_detail', function *(next) {
