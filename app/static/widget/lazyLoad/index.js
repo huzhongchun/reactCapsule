@@ -9,7 +9,7 @@
  * @desc 所有在可视区域之上(包括可视区域)的图片都将被加载
  */
 
-
+(function(window){
     let lazyLoadImg = function(options){
         this.settings = $.extend({
             threshold: 0,
@@ -64,4 +64,14 @@
         }
     };
 
-    module.exports = lazyLoadImg;
+    if (typeof exports === "object") {
+        module.exports = lazyLoadImg;
+    } else if (typeof define === "function" && define.amd) {
+        define([], function () {
+            return lazyLoadImg
+        })
+    } else {
+        window.lazyLoadImg = lazyLoadImg;
+    }
+
+})(window);

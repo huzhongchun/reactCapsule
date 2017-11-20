@@ -19,7 +19,7 @@ module.exports = {
     ]
   },
   output: {
-    path: __dirname + "/build",//'/Users/huzhongchun/thefair/www/react/build',//__dirname + "/build",
+    path: '/Users/huzhongchun/thefair/www/thefair_static_resource/react',//__dirname + "/build",
     filename: "[name].js",
     publicPath: '/'
   },

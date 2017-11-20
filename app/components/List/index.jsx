@@ -3,7 +3,7 @@ import React from 'react'
 import Detail from '../../containers/Detail'
 import LoadMore from '../../components/LoadMore'
 import Item from './Item'
-import LazyLoad from '../../components/LazyLoad/index'
+import LazyLoad from '../../static/widget/lazyLoad'
 import './style.less'
 import {getListData} from '../../fetch/Capsule/index'
 

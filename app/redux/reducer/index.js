@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import userInfo from './userInfo'
-import passInfo from './passInfo'
+import wechatShare from './wechatShare'
 
 export default combineReducers({
     userInfo,
-    passInfo
+    wechatShare
 });

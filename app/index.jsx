@@ -8,11 +8,7 @@ import './static/css/common.less'
 
 let initStore = {
     userInfo: {
-        name: 'huzhongchun',
-        avatar: 'http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKo17faASULS5nxqibFs9AViaBTxetDxL0mB0btnN9I7LscgTQOBlxgQpuDicQQmSwDICXrdcS87gZCg/0?ts=1510391460?t=111'
-    },
-    passInfo:{
-        alias: '年卡会员'
+        nick: $('.hidden-nick-value').val()
     }
 };
 // 创建 Redux 的 store 对象

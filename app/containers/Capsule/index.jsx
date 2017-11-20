@@ -1,7 +1,8 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import List from '../../components/List'
 import {connect} from 'react-redux'
+
+import List from '../../components/List'
 import {bindActionCreators} from 'redux'
 import userInfoActions from '../../redux/actions/userInfo'
 import './less/style.less'

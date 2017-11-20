@@ -1,0 +1,781 @@
+.player-container{
+  display: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right:0;
+  margin: auto;
+  z-index: 99;
+  width: 375px;
+  height: 100%;
+  background: #fff;
+  -webkit-transition: all .3s ease 0s ;
+  -moz-transition: all .3s ease 0s;
+  -ms-transition: all .3s ease 0s;
+  -o-transition: all .3s ease 0s;
+  transition: all .3s ease 0s;
+  /*-webkit-transform: translate3d(-50%,0,0);*/
+  /*-moz-transform: translate3d(-50%,0,0);*/
+  /*-ms-transform: translate3d(-50%,0,0);*/
+  /*-o-transform: translate3d(-50%,0,0);*/
+  /*transform: translate3d(-50%,0,0);*/
+}
+.player-container video{
+  display: none;
+  z-index: -1;
+  transform: translate3d(0,0,-1px);
+}
+.player-container audio{
+  display: none;
+  z-index: -1;
+  transform: translate3d(0,0,-1px);
+}
+.player-container .player-video{
+  display: none;
+}
+.player-container.type-mini{
+  /*-webkit-transform: translate3d(0,100%,0);*/
+  /*-moz-transform: translate3d(0,100%,0);*/
+  /*-ms-transform: translate3d(0,100%,0);*/
+  /*-o-transform: translate3d(0,100%,0);*/
+  /*transform: translate3d(0,100%,0);*/
+  top: inherit;
+  bottom: 0;
+  height: 60px;
+  overflow: hidden;
+}
+.player-container.type-mini .player-view-mini{
+  z-index: 10;
+  visibility: visible;
+}
+.player-container.type-mini .player-view-normal{
+  opacity: 0;
+}
+.player-container .video-js{
+  display: none;
+}
+.player-container .top-handle-box{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,.9);
+  box-shadow: #141519 0 1px 2px 0;
+  z-index: 5;
+}
+.player-container .top-handle-mini{
+  display: block;
+  font-size: 13px;
+  color: #fff;
+  text-shadow: rgba(0,0,0,.5) 0 1px 2px;
+  position: absolute;
+  top: 0;
+  right: 7px;
+  text-align: center;
+}
+.player-container .top-handle-mini::before{
+  display: block;
+  content: '';
+  width: 30px;
+  height: 25px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") rgba(255,255,255,.9) -237px 7px no-repeat;
+  background-size: 375px auto;
+  margin-bottom: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: #141519 0 1px 2px 0;
+}
+.player-container .book-info-box{
+  width: 100%;
+  height: 60.5%;
+  overflow: hidden;
+  position: relative;
+}
+.player-container .player-controls-box{
+  width: 100%;
+  position: relative;
+  margin: 0 auto 10px;
+}
+.player-container .player-view-normal .book-img{
+  display: block;
+  width: 163px;
+  height: 216px;
+  overflow: hidden;
+  box-shadow: rgba(0,0,0,.4) 0 6px 12px 0;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 52px;
+}
+.player-container .book-img img{
+  display: block;
+  width: 100%;
+}
+.player-container .bg-box{
+  height: 70.60%;
+  max-height: 245px;
+  background: #888C91; /* 兼容不支持背景渐变的浏览器 */
+  background: linear-gradient(to bottom,#888C91,#3b3f45);
+  background:-moz-linear-gradient(to bottom,#888C91,#3b3f45);
+  background:-webkit-gradient(linear, 0 0, 0 bottom, from(#888C91), to(#3b3f45));
+  background:-o-linear-gradient(to bottom,#888C91,#3b3f45);
+}
+.player-container .player-view-normal{
+  position: relative;
+  transition: all .2s ease 0s;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: center;
+  -webkit-align-items: center;
+}
+.player-container .player-view-normal .book-name{
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: #353535;
+  width: 335px;
+  height: 25px;
+  line-height: 25px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 55px auto 17px;
+}
+.player-container .player-view-normal .book-handler{
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #8E8E8E;
+}
+
+.player-container .block-process{
+  padding: 0 15px;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: center;
+  -webkit-align-items: center;
+  margin: 0 auto 32px;
+}
+.player-container .block-process .current-time{
+  display: inline-block;
+  width: 36px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 13px;
+  color: #8E8E8E;
+}
+.player-container .block-process .duration{
+  display: inline-block;
+  width: 36px;
+  font-size: 13px;
+  color: #8E8E8E;
+  height: 24px;
+  line-height: 24px;
+}
+.player-container .block-process .play-process{
+  width: 250px;
+  height: 24px;
+}
+.player-container .block-process .play-line-bg{
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #8E8E8E;
+  border-radius: 5px;
+  position: relative;
+  top: 11px;
+}
+.player-container .block-process .play-line{
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #1B7367;
+  border-radius: 5px;
+  position: relative;
+}
+
+.player-container .block-process .play-pointer{
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 30px;
+  border: 1px solid #1B7367;
+  background: #fff;
+  position: absolute;
+  right: -5px;
+  margin: auto;
+  top:0;
+  bottom: 0;
+  -webkit-transition: all .3s ease 0s;
+  -moz-transition: all .3s ease 0s;
+  -ms-transition: all .3s ease 0s;
+  -o-transition: all .3s ease 0s;
+  transition: all .3s ease 0s;
+}
+.player-container .play-pointer .last-p{
+  display: none;
+  min-width: 125px;
+  height: 20px;
+  position: absolute;
+  top: 15px;
+  left: -10px;
+  color: #1B7367;
+  font-size: 12px;
+  padding: 4px 5px;
+  line-height: 20px;
+  word-break: keep-all;
+  white-space: nowrap;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") transparent -247px -138px no-repeat;
+  background-size: 375px auto;
+}
+.player-container .play-pointer .last-p.show{
+  display: block;
+}
+.player-container .block-process .play-pointer.touching{
+  width: 24px;
+  height: 24px;
+  background: #1B7367;
+  right: -12px;
+}
+.player-container .block-process .play-pointer.touching .last-p{
+  top: 26px;
+  left: -2px;
+}
+
+.player-container .block-btn{
+  padding: 0 22px;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: center;
+  -webkit-align-items: center;
+  margin: 0 auto 10px;
+}
+.player-container .block-btn .player-handle-btn{
+  display: inline-block;
+  width: 25px;
+  height: 50px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") 0 0 no-repeat;
+  background-size: 375px auto;
+}
+
+.player-container .block-btn .btn-back-15{
+  background-position: -46px  14px;
+}
+.player-container .block-btn .btn-forward-15{
+  background-position: -45px -63px;
+}
+.player-container .block-btn .btn-play{
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  background-position: -183px -62px;
+  border: 1px solid #1B7367;
+}
+.player-container .block-btn .btn-play.pause{
+  background-position: -32px -129px;
+}
+.player-container .block-btn .btn-play.loading{
+  background: url("data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdpZHRoPSIxMDBweCIgIGhlaWdodD0iMTAwcHgiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiBub25lOyI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC45MTY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC44MzMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSg2MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC43NXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNjY2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjU4MzMzMzMzMzMzMzMzMzRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDE1MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNDE2NjY2NjY2NjY2NjY2N3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMjEwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjMzMzMzMzMzMzMzMzMzMzNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI0MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4yNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMjcwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjE2NjY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzMDAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuMDgzMzMzMzMzMzMzMzMzMzNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSIwcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48L3N2Zz4=") center no-repeat;
+  background-size: 25px auto;
+}
+.player-container .block-btn .btn-prev-item{
+  background-position: -96px 14px;
+}
+.player-container .block-btn .btn-prev-item.not{
+  background-position: -153px -127px;
+}
+.player-container .block-btn .btn-next-item{
+  background-position: -96px -64px;
+}
+.player-container .block-btn .btn-next-item.not{
+  background-position: -97px -129px;
+}
+
+
+.player-container .bottom-handle-box{
+  border-top: 1px solid #F5F5F5;
+  width: 345px;
+  display: inline-flex;
+  display: -webkit-inline-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
+  margin: 0 auto;
+  padding: 12px 10px 9px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.player-container .bottom-handle-box .bottom-handle-item{
+  font-size: 12px;
+  color: #8E8E8E;
+  position: relative;
+}
+.player-container .bottom-handle-item .item-text{
+  display: block;
+  text-align: center;
+}
+.player-container .bottom-handle-item .item-text::before{
+  display: block;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") -341px 0 no-repeat;
+  background-size: 375px auto;
+}
+.player-container .bottom-handle-doc::before{
+  display: block;
+  content: '';
+  width: 16px;
+  height: 19px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") -298px -80px no-repeat;
+  background-size: 375px auto;
+  margin: 0 auto 7px;
+}
+.player-container  .bottom-handle-mini .item-text::before{
+  display: block;
+  content: '';
+  width: 22px;
+  height: 18px;
+  background-position: -341px -82px;
+  margin: 0 auto 8px;
+}
+.player-container  .bottom-handle-mini::before{
+  display: block;
+  content: '';
+  width: 90px;
+  height: 28px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/top_tips.png") center no-repeat;
+  background-size: auto 100%;
+  position: absolute;
+  top: -33px;
+  left: -22px;
+  z-index: 2;
+}
+.player-container  .bottom-handle-mini.clicked::before {
+  display: none;
+}
+.player-container  .bottom-handle-rate .rate-numb{
+  display: block;
+  width: 22px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  margin: 0 auto 8px;
+  color: #353535;
+  font-size: 14px;
+}
+.player-container  .bottom-handle-list .item-text::before{
+  display: block;
+  content: '';
+  width: 22px;
+  height: 18px;
+  background-position: -341px 0;
+  margin: 0 auto 8px;
+}
+.player-container .bottom-handle-share .item-text::before{
+  display: block;
+  content: '';
+  width: 22px;
+  height: 19px;
+  background-position: -198px -145px;
+  margin: 0 auto 8px;
+}
+
+.player-container .player-view-mini{
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: center;
+  -webkit-align-items: center;
+  padding: 8px 15px;
+  width: 345px;
+  background: rgba(241,241,241,.8);
+  position: absolute;
+  top:0;
+  left: 0;
+  z-index: -1;
+  visibility: hidden;
+}
+.player-container .player-view-mini .mini-play-btn{
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  box-shadow: rgba(0,0,0,.26) 0 3px 2px 0;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") #1B7367 -104px 6px no-repeat;
+  background-size: 280px auto;
+}
+.player-container .player-view-mini .mini-play-btn.pause{
+  background-position: -106px -50px;
+}
+.player-container .player-view-mini .mini-play-btn.loading{
+  background: url("data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdpZHRoPSIxMDBweCIgIGhlaWdodD0iMTAwcHgiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiBub25lOyI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC45MTY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC44MzMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSg2MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC43NXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNjY2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjU4MzMzMzMzMzMzMzMzMzRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDE1MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNDE2NjY2NjY2NjY2NjY2N3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMjEwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjMzMzMzMzMzMzMzMzMzMzNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI0MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4yNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMjcwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjE2NjY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzMDAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuMDgzMzMzMzMzMzMzMzMzMzNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSIwcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48L3N2Zz4=") center no-repeat;
+  background-size: 20px auto;
+}
+.player-container .mini-info-box .book-name{
+  font-size: 16px;
+  color: #353535;
+  text-align: left;
+  width: 250px;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+.player-container .player-view-mini .book-time{
+  font-size: 13px;
+  color: #8E8E8E;
+}
+.player-container .player-view-mini .close-btn{
+  width: 20px;
+  height: 30px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") 1px -141px no-repeat;
+  background-size: 375px auto;
+}
+
+.player-container .doc-view{
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  background: #fff;
+  top:0;
+  left: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s ease 0s;
+  -moz-transition: all .3s ease 0s;
+  -ms-transition: all .3s ease 0s;
+  -o-transition: all .3s ease 0s;
+  transition: all .3s ease 0s;
+  -webkit-transform: translate3d(0,100%,0);
+  -moz-transform: translate3d(0,100%,0);
+  -ms-transform: translate3d(0,100%,0);
+  -o-transform: translate3d(0,100%,0);
+  transform: translate3d(0,100%,0);
+  opacity: 0;
+  padding: 15px;
+  overflow: hidden;
+}
+.player-container .doc-view.show{
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  opacity: 1;
+}
+.player-container  .doc-view-content{
+  width: 100%;
+  /*overflow: hidden;*/
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling : touch;
+  font-size: 14px;
+}
+.player-container .doc-view .close-btn{
+  display: block;
+  height: 30px;
+  width: 100%;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_doc_close.png")  0 0 no-repeat;
+  background-size: 100% auto;
+  position: absolute;
+  top:0;
+  left: 0;
+  z-index: 2;
+}
+.player-container  .set-wechat-top{
+  display: none;
+  position: absolute;
+  top:0;
+  left: 0;
+  background: rgba(165,213,206,.95);
+  color: #353535;
+  font-size: 14px;
+  padding: 17px 0 18px;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+.player-container  .set-wechat-top::after{
+  display: inline-block;
+  content: '';
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") -290px -38px  no-repeat;
+  background-size: 375px auto;
+}
+.player-container  .set-share-tips{
+  display: none;
+  position: absolute;
+  top:0;
+  left: 0;
+  background: rgba(165,213,206,.95);
+  color: #353535;
+  font-size: 14px;
+  padding: 17px 0 18px;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+.player-container  .set-share-tips>span{
+  display: inline-block;
+  width: 320px;
+}
+.player-container  .set-share-tips::after{
+  display: inline-block;
+  content: '';
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/player_icons.png") -290px -38px  no-repeat;
+  background-size: 375px auto;
+}
+
+
+.text-android{
+  display: none;
+}
+
+/*** 安卓设备 ***/
+.player-platform-android .bottom-handle-box .bottom-handle-mini{
+  display: none;
+}
+.player-platform-android .set-wechat-top{
+  padding: 0;
+}
+.player-platform-android .set-wechat-top::after{
+  display: none;
+}
+.player-platform-android .text-ios{
+  display: none;
+}
+.player-platform-android .text-android{
+  display: block;
+  width: 100%;
+  height: 80px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/app_download_snack.png") center no-repeat;
+  background-size: 100% auto;
+}
+.player-platform-android .bottom-handle-box{
+  padding: 12px 30px 9px;
+}
+
+/*** 播放列表 ***/
+.player-container .source-list-area{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.8);
+  z-index: 20;
+  -webkit-transform: translate3d(0,101%,0);
+  -moz-transform: translate3d(0,101%,0);
+  -ms-transform: translate3d(0,101%,0);
+  -o-transform: translate3d(0,101%,0);
+  transform: translate3d(0,101%,0);
+}
+
+.player-container .source-list-area .list-box{
+  display: block;
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all .2s ease .1s;
+  -moz-transition: all .2s ease .1s;
+  -ms-transition: all .2s ease .1s;
+  -o-transition: all .2s ease .1s;
+  transition: all .2s ease .1s;
+  -webkit-transform: translate3d(0,101%,0);
+  -moz-transform: translate3d(0,101%,0);
+  -ms-transform: translate3d(0,101%,0);
+  -o-transform: translate3d(0,101%,0);
+  transform: translate3d(0,101%,0);
+}
+.player-container .source-list-area.show{
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+.player-container .source-list-area.show .list-box{
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+.player-container .source-list-area .list-title{
+  padding: 18px 0 19px;
+  font-size: 16px;
+  text-align: center;
+}
+.player-container .list-wrapper {
+  height: 275px;
+  padding: 0 15px;
+  overflow: scroll;
+  -webkit-overflow-scrolling : touch;
+}
+.player-container .list-wrapper .source-item{
+  padding: 10px 0 13px;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  align-items: center;
+  -webkit-align-items: center;
+  border-top: 1px solid #ddd;
+  position: relative;
+}
+.player-container .source-item .book-img{
+  width: 39px;
+  min-height: 51px;
+  box-shadow: #BCBCBC 0 2px 4px 0;
+  margin-right: 13px;
+}
+.player-container .source-item .book-title{
+  display: block;
+  margin-bottom: 3px;
+  font-size: 15px;
+  line-height: 21px;
+  height: 21px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 225px;
+}
+.player-container .source-item .duration-text{
+  display: block;
+  font-size: 13px;
+  color: #9B9B9B;
+}
+
+.player-container .source-item.loading::after{
+  display: block;
+  content: '';
+  width: 80px;
+  height: 20px;
+  color: #1B7367;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background: url("data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdpZHRoPSIxMDBweCIgIGhlaWdodD0iMTAwcHgiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiBub25lOyI+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC45MTY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC44MzMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSg2MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC43NXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoOTAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNjY2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjU4MzMzMzMzMzMzMzMzMzRzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDE1MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC41cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxODAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNDE2NjY2NjY2NjY2NjY2N3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMjEwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjMzMzMzMzMzMzMzMzMzMzNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI0MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4yNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMjcwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzAwMDAwMCI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIgdGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjE2NjY2NjY2NjY2NjY2NjY2cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzMDAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjMDAwMDAwIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiB0aW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuMDgzMzMzMzMzMzMzMzMzMzNzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDMzMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMwMDAwMDAiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIHRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSIwcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48L3N2Zz4=") center no-repeat;
+  background-size: 15px auto;
+}
+
+.player-container .source-item.active::after{
+  display: block;
+  content: '正在播放';
+  width: 80px;
+  height: 20px;
+  color: #1B7367;
+  font-size: 15px;
+  text-align: center;
+  line-height: 20px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+.player-container .set-wechat-top-dialog{
+  display: none;
+  position: fixed;
+  z-index: 200;
+  background: rgba(0,0,0,.8);
+  left: 0;
+  right: 0;
+  top:0;
+  bottom: 0;
+}
+.set-wechat-top-dialog .dialog-box{
+  display: block;
+  width: 315px;
+  height: 412px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/set_wecaht_top_dialog.png") center 0 no-repeat;
+  background-size: 100% auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top:0;
+  margin: auto;
+}
+.set-wechat-top-dialog .dialog-box .close-btn{
+  display: block;
+  content: '';
+  width: 100%;
+  height: 27px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAMAAADypuvZAAAAV1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////+ORg7oAAAAHHRSTlMAqfrvviQI9uPel4w1GRNHyLGjn4NwZllQLysN2cOOZQAAAVlJREFUSMeM0NuugyAQheElZ1A869a63v85d9J6QduJ9bsk/EwYCOyaTNRK6WjSanHDXge+CfWOa40h6Yels61zre2WwZM0zUViK1JPm0PBbZMmKwvIakU/H/hyzJ6qhqQ1VClDlJOiafHlERmai88Gxgc+dJp9xoXcU3cfczRHh0tupH6b1UaO+GlkLP9l2Dv85HqaYtcMGTfkwBonq1SDWxqlLF4qJtyUWJ05fcZN2bM5tzAXx384yUfzaxc79VFcYIUPFYvq0Nyfq5verhSVdDA9Fxi4yZfkRzYGwNI7iJU82HlarBwAqZIbYOCKxAVyJTdYmGDYQa7kBh0NIi3kSm5gGaHZQq7kBi01FB3kSm7gqP47rQMaAGAYhmH8WZuDAVy6trVJParv1SBq5LXcOqM62IlGhbDiPsVSFTZlWbU8ABjUFNQGnwPqUYKRj9CcE6pXt5fE0lGRUCMF3s/zvgAAAABJRU5ErkJggg==") center no-repeat;
+  background-size: 26px auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+
+.player-container .set-share-tips-dialog{
+  display: none;
+  position: fixed;
+  z-index: 200;
+  background: rgba(0,0,0,.8);
+  left: 0;
+  right: 0;
+  top:0;
+  bottom: 0;
+}
+.set-share-tips-dialog .dialog-box{
+  display: block;
+  width: 315px;
+  height: 412px;
+  background: url("http://resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/public/images/set_share_tips_dialog.png") center 0 no-repeat;
+  background-size: 100% auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top:0;
+  margin: auto;
+}
+.set-share-tips-dialog .dialog-box .close-btn{
+  display: block;
+  content: '';
+  width: 100%;
+  height: 27px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAMAAADypuvZAAAAV1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////+ORg7oAAAAHHRSTlMAqfrvviQI9uPel4w1GRNHyLGjn4NwZllQLysN2cOOZQAAAVlJREFUSMeM0NuugyAQheElZ1A869a63v85d9J6QduJ9bsk/EwYCOyaTNRK6WjSanHDXge+CfWOa40h6Yels61zre2WwZM0zUViK1JPm0PBbZMmKwvIakU/H/hyzJ6qhqQ1VClDlJOiafHlERmai88Gxgc+dJp9xoXcU3cfczRHh0tupH6b1UaO+GlkLP9l2Dv85HqaYtcMGTfkwBonq1SDWxqlLF4qJtyUWJ05fcZN2bM5tzAXx384yUfzaxc79VFcYIUPFYvq0Nyfq5verhSVdDA9Fxi4yZfkRzYGwNI7iJU82HlarBwAqZIbYOCKxAVyJTdYmGDYQa7kBh0NIi3kSm5gGaHZQq7kBi01FB3kSm7gqP47rQMaAGAYhmH8WZuDAVy6trVJParv1SBq5LXcOqM62IlGhbDiPsVSFTZlWbU8ABjUFNQGnwPqUYKRj9CcE6pXt5fE0lGRUCMF3s/zvgAAAABJRU5ErkJggg==") center no-repeat;
+  background-size: 26px auto;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}

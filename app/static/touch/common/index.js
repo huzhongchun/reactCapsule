@@ -2,7 +2,11 @@
  * Created by huzhongchun on 2016/9/27.
  */
 
-    var _platform = Thefair.platform();
+import wxJsbridge from '../../widget/wxJsbridge'
+
+
+
+    let _platform = Thefair.platform();
 
 
     /**
@@ -11,7 +15,7 @@
      * @returns {boolean}
      */
     function checkMobileFormat(mobile) {
-        var mobileRegExp = new RegExp(/^1[3|4|5|7|8]\d{9}$/);
+        let mobileRegExp = new RegExp(/^1[3|4|5|7|8]\d{9}$/);
         return mobileRegExp.test(mobile);
     }
 
@@ -55,7 +59,7 @@
      * @returns {boolean}
      */
     function isUndefined(v) {
-        return typeof (v) === 'undefined' ? true : false;
+        return typeof (v) === 'undefined';
     }
 
     /**
@@ -64,7 +68,7 @@
      * @returns {boolean}
      */
     function isObject(obj){
-        return obj && typeof(obj) == "object" && !(obj instanceof Array)
+        return obj && typeof(obj) === "object" && !(obj instanceof Array)
     }
 
     /**
@@ -86,7 +90,7 @@
      * @returns {boolean}
      */
     function upLoadImage(file,options){
-        var opt = $.extend({
+        let opt = $.extend({
             path:'activity',
             size: 8,//单位M
             uploadUrl: "/v1/upload/image",
@@ -147,11 +151,11 @@
      *  /[^\x00-\xff]/g  匹配全角的中文   一个中文按照2个字符计算,英文一个字母算1个字符
      */
     function subStrByChar(str,setLength) {
-        var lengths = str.replace(/[^\x00-\xff]/g, "**").length, i, charNum = 2, cutStr;
+        let lengths = str.replace(/[^\x00-\xff]/g, "**").length, i, charNum = 2, cutStr;
         if(lengths>setLength){
             for(i = 0; i<str.length; ){
-                var strChar = str.charAt(i);
-                var charLength = strChar.replace(/[^\x00-\xff]/g, "**").length;
+                let strChar = str.charAt(i);
+                let charLength = strChar.replace(/[^\x00-\xff]/g, "**").length;
                 charNum += charLength;
                 if(charNum<=setLength){
                     i++;
@@ -563,22 +567,59 @@
     }
 
 
+    /**
+     * 设置微信的分享内容,为空则为默认内容
+     * @param options
+     * @returns {wxShareObject}
+     */
+    function setWxShareContent(options){
+        let shareSetting = Object.assign({},{
+            title: '新世相',
+            desc: '我们终将改变潮流的方向',
+            shareTimelineDesc: options.shareTimelineDesc ? options.shareTimelineDesc : options.desc,
+            image: 'http://resource.bj.taooo.cc/_assets/thefair/library/images/share_icon_2.png',
+            link: location.href,
+            shareAppMessageSuccessCallback: null,
+            shareAppMessageCancelCallback: null,
+            shareTimelineSuccessCallback: null,
+            shareTimelineCancelCallback: null
+        },options);
+        return new wxJsbridge({
+            //分享给朋友
+            shareAppMessageTitle: shareSetting.title,
+            shareAppMessageDesc: shareSetting.desc,
+            shareAppMessageLink: shareSetting.link,
+            shareAppMessageImgUrl: shareSetting.image,
+            shareAppMessageType: shareSetting.type,
+            shareAppMessageDataUrl: shareSetting.dataUrl,
+            shareAppMessageSuccessCallback: shareSetting.shareAppMessageSuccessCallback,
+            shareAppMessageCancelCallback: shareSetting.shareAppMessageCancelCallback,
+            // 分享到朋友圈
+            shareTimelineTitle: shareSetting.shareTimelineDesc ? shareSetting.shareTimelineDesc : shareSetting.desc,
+            shareTimelineLink: shareSetting.link,
+            shareTimelineImgUrl: shareSetting.image,
+            shareTimelineSuccessCallback: shareSetting.shareTimelineSuccessCallback,
+            shareTimelineCancelCallback: shareSetting.shareTimelineCancelCallback
+        });
+    }
+
 
 module.exports = {
-    commonIsWechat:isWechat(),
-    commonCheckMobileFormat:checkMobileFormat,
-    commonHandleAjaxError: handleAjaxError,
-    commonUpLoadImage: upLoadImage,
-    commonHackAlert: hackAlert,
-    commonSubStr: subStr,
-    commonSubStrByChar: subStrByChar,
-    commonCloseWechatWebview: closeWechatWebview,
-    commonHideWechatOptionMenu: hideWechatOptionMenu,
-    commonShowWechatOptionMenu:showWechatOptionMenu,
-    commonIsObject:isObject,
-    commonGetXThefairUaApp:getXThefairUaApp,
-    commonVarTypeStr: varTypeStr,
-    commonEmpty:empty,
-    commonInitGetVerifyCode: initGetVerifyCode,
-    commonWechatImgDisplay: wechatImgDisplay,
+    isWechat:isWechat(),
+    checkMobileFormat,
+    handleAjaxError,
+    upLoadImage,
+    hackAlert,
+    subStr,
+    subStrByChar,
+    closeWechatWebview,
+    hideWechatOptionMenu,
+    showWechatOptionMenu,
+    isObject,
+    getXThefairUaApp,
+    varTypeStr,
+    empty,
+    initGetVerifyCode,
+    wechatImgDisplay,
+    setWxShareContent
 }

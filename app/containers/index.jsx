@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import {setShareOptions} from '../static/touch/chicken/js/public'
 
 import '../static/css/base.css'
 
@@ -11,9 +12,17 @@ class App extends React.Component {
             initDone: false
         }
     }
+    componentDidMount(){
+        setShareOptions();
+        // 更改状态
+        this.setState({
+            initDone: true
+        })
+    }
     render() {
         return (
             <div>
+
                 {
                     this.state.initDone
                     ? this.props.children
@@ -21,13 +30,6 @@ class App extends React.Component {
                 }
             </div>
         )
-    }
-    componentDidMount() {
-
-        // 更改状态
-        this.setState({
-            initDone: true
-        })
     }
 }
 

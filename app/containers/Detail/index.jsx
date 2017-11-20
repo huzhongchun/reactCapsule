@@ -1,7 +1,11 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+
+
+
 import DetailCapsule from './subPage/detailCapsule'
 import {getDetailData} from '../../fetch/Capsule'
+
 import './style.less'
 
 class Detail extends React.Component {
@@ -35,7 +39,9 @@ class Detail extends React.Component {
                 data: Object.assign(this.state.data,data.result)
             });
             window.sessionStorage.setItem('capsule_detail_data_'+this.props.params.item_id,this.state.data);
-        })
+        });
+
+
     }
 
     render() {
@@ -44,7 +50,7 @@ class Detail extends React.Component {
                 {
                     this.state.loading?
                         <div className="loading">加载中...</div>
-                        :<DetailCapsule data={this.state.data} item_id={this.props.item_id} />
+                        :<DetailCapsule data={this.state.data} item_id={this.props.params.item_id} />
                 }
 
             </div>
@@ -52,4 +58,5 @@ class Detail extends React.Component {
     }
 }
 
-export default Detail;
+
+export default Detail
