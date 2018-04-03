@@ -13,7 +13,7 @@ class ListItem extends React.Component {
 
     render() {
         const data = this.props.data;
-        let tpl = '';
+        let tpl = <div />;
         switch (data.item_type){
             case 'audio_item':
                 tpl = <div className="book-item needsclick item-type-audio_item" data-price={data.item_type}
@@ -23,13 +23,13 @@ class ListItem extends React.Component {
                     </div>
                     <div className="book-info">
                         <a className="book-img" href={data.url}>
-                            <img className="lazy-img" src={data.cover_img.url}/>
+                            <img className="lazy-img" data-url={data.cover_img.url}/>
                         </a>
                         <div className="book-intro">
                             <a className="book-name" href={data.url}>{data.item_name}</a>
                             <a className="book-desc" href={data.url}>{data.desc}</a>
                             <div className="duration">
-                                <span className="duration-text">时长:{data.attachComment.duration.text}</span>
+                                <span className="duration-text">时长:{data.attachment.duration.text}</span>
                                 <ListItemHandleBtn data={data} />
                             </div>
                         </div>

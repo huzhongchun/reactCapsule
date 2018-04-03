@@ -27,6 +27,7 @@ class List extends React.Component {
     componentWillMount(){
     }
     componentDidMount(){
+        console.log(this.state);
         //图片懒加载
         let lazy = new LazyLoad({
             threshold: 400,

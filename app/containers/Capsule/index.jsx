@@ -36,7 +36,7 @@ class Capsule extends React.Component {
                         <img src="//resource-thefair.oss-cn-qingdao.aliyuncs.com/_assets/touch/chicken/capsule/images/banner.png?v=2017102610" />
                     </a>
                 </div>
-                <List title={'最新上架'} />
+                <List title={'最新上架12345'} />
             </div>
         )
     }

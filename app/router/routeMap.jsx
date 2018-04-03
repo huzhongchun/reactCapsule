@@ -22,7 +22,7 @@ class RouterMap extends React.Component {
         return (
             <Router history={this.props.history} onUpdate={this.updateHandle.bind(this)} >
                 <Route path='/' component={App} >
-                    <IndexRoute component={Category} />
+                    <IndexRoute component={Capsule} />
                     <Route path='chicken/page/item_detail/:item_id'  component={Detail}/>
                     <Route path='chicken/page/capsule_index_react' component={Capsule} />
                     <Route path='chicken/page/category' component={Category} />

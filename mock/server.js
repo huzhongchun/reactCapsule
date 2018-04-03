@@ -1,7 +1,9 @@
 let app = require('koa')();
 let router = require('koa-router')();
 var cors = require('koa-cors');
+// let bodyParser= require('koa-bodyparser');
 
+// app.use(bodyParser());
 app.use(cors());
 // capsule_detail
 let detailData = require('./capsule/detail.js')
@@ -11,17 +13,20 @@ router.post('/chicken/page/get_item_detail', function *(next) {
 
 //capsuleList
 let capsuleListData = require('./capsule/list.js');
+//listenList
+let listenListData = require('./listen/list.js');
 router.post('/chicken/item/get_onsell_item_list', function *(next) {
+    // let rBody = this.request.body;
+    // console.log(rBody);
+    const params = this.params;let listData = '';
 
-    let listData = Object.assign({},capsuleListData); //clone
-    // 参数
-    const params = this.params;
-    const paramsLastItemId = params.last_item_id;
-    console.log('last_item_id：' + paramsLastItemId);
-    if(paramsLastItemId === '2619182023912111070'){
-        listData.result.last_item_id = '2619182023911192098'
-    }else if(paramsLastItemId === '2619182023911192098'){
-        delete listData.result.last_item_id
+    console.log(this.request);
+    if(params.item_type === 'audio_item'){
+        //listenList
+        listData = Object.assign({},listenListData);
+    }else {
+        //capsuleList
+        listData = Object.assign({}, listenListData);
     }
     this.body = listData
 });

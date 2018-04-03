@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { browserHistory } from 'react-router'
+import { hashHistory } from 'react-router'
 import configureStore from './redux/store/configureStore'
 
 import './static/css/common.less'
@@ -21,7 +21,7 @@ import RouteMap from './router/routeMap'
 
 render(
     <Provider store={store}>
-        <RouteMap history={browserHistory}/>
+        <RouteMap history={hashHistory}/>
     </Provider>,
     document.getElementById('scale-wrapper')
 );
